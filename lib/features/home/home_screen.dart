@@ -42,6 +42,7 @@ class HomeScreen extends HookConsumerWidget {
                 controller: scrollController,
                 child: ListView.separated(
                   itemCount: websiteList.length,
+                  controller: scrollController,
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   separatorBuilder: (BuildContext context, int index) {
