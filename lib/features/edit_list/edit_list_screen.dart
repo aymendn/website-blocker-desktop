@@ -10,6 +10,7 @@ class EditListScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final blockList = ref.watch(blockListControllerProvider);
+    final controller = ref.watch(editListControllerProvider);
     final notifier = ref.read(editListControllerProvider.notifier);
 
     final textController = useTextEditingController(text: blockList.join('\n'));
@@ -20,9 +21,19 @@ class EditListScreen extends HookConsumerWidget {
         titleSpacing: 2,
         actions: [
           FilledButton.icon(
-            onPressed: () => notifier.updateList(textController.text),
+            onPressed: controller.isLoading
+                ? null
+                : () => notifier.updateList(textController.text),
             label: Text("Save"),
-            icon: Icon(Symbols.save, fill: 1),
+            icon: controller.isLoading
+                ? SizedBox.square(
+                    dimension: 14,
+                    child: const CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.black38,
+                    ),
+                  )
+                : Icon(Symbols.save, fill: 1),
           ),
           const SizedBox(width: 10),
         ],

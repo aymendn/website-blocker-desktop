@@ -20,6 +20,16 @@ class WebsiteBlockerApp extends ConsumerWidget {
         scrollbarTheme: ScrollbarThemeData(
           thumbColor: WidgetStateProperty.all(Colors.blueGrey.shade400),
         ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 237, 244, 252),
+          surfaceTintColor: const Color.fromARGB(255, 237, 244, 252),
+          foregroundColor: Colors.black,
+          shadowColor: Colors.black,
+          shape: const Border(bottom: BorderSide(color: Colors.black12)),
+          elevation: 0,
+          scrolledUnderElevation: 0,
+        ),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 237, 244, 252),
       ),
     );
   }
