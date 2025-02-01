@@ -8,8 +8,9 @@ import 'package:website_blocker_desktop/app.dart';
 import 'package:website_blocker_desktop/hosts_manager.dart';
 import 'package:website_blocker_desktop/providers/shared_preferences_provider.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:windows_single_instance/windows_single_instance.dart';
 
-void main() async {
+Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Must add this line.
@@ -34,6 +35,12 @@ void main() async {
 
   // * Initialize HostsManager
   await HostsManager.init();
+
+  // * Ensure single instance
+  await WindowsSingleInstance.ensureSingleInstance(
+    args,
+    "website_blocker_desktop",
+  );
 
   // * Make GoRouter's push and pop methods work on web urls
   GoRouter.optionURLReflectsImperativeAPIs = true;

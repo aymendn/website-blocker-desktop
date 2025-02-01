@@ -24,6 +24,7 @@ dependencies:
   material_symbols_icons: ^4.2801.1
   quick_log: ^5.5.3
   window_manager: ^0.4.3
+  windows_single_instance: ^1.0.1
 
 
 dev_dependencies:
