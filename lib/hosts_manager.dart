@@ -41,11 +41,10 @@ abstract class HostsManager {
 
   static Future<void> updateBlockedWebsites(List<String> websites) async {
     final originalContent = await readHostsFile();
-    final newBlock = [
-      blockStart,
-      ...websites.map((site) => '127.0.0.1\t$site'),
-      blockEnd
-    ].join('\n');
+    final newBlock = websites.isEmpty
+        ? ""
+        : [blockStart, ...websites.map((site) => '127.0.0.1\t$site'), blockEnd]
+            .join('\n');
 
     // Remove existing block and add new one
     final cleanedContent = originalContent
