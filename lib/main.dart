@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
 import 'package:website_blocker_desktop/app.dart';
+import 'package:website_blocker_desktop/hosts_manager.dart';
 import 'package:website_blocker_desktop/providers/shared_preferences_provider.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -16,6 +17,8 @@ void main() async {
 
   WindowOptions windowOptions = WindowOptions(
     size: Size(400, 500),
+    maximumSize: Size(400, 500),
+    minimumSize: Size(400, 500),
     center: true,
     skipTaskbar: false,
     titleBarStyle: TitleBarStyle.normal,
@@ -28,6 +31,9 @@ void main() async {
 
   // * Initialize shared preferences
   await SharedPreferencesService.init();
+
+  // * Initialize HostsManager
+  await HostsManager.init();
 
   // * Make GoRouter's push and pop methods work on web urls
   GoRouter.optionURLReflectsImperativeAPIs = true;
