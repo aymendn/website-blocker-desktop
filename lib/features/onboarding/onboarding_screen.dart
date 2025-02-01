@@ -54,14 +54,15 @@ class OnboardingScreen extends ConsumerWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
-                FilledButton(
-                  onPressed: () {
-                    notifier.nextPage();
-                  },
-                  child: Text(
-                    isLast ? 'Get Started' : 'Next',
-                  ),
-                ),
+                isLast
+                    ? FilledButton(
+                        onPressed: notifier.nextPage,
+                        child: Text('Get Started'),
+                      )
+                    : OutlinedButton(
+                        onPressed: notifier.nextPage,
+                        child: Text('Next'),
+                      ),
               ],
             ),
           ),
